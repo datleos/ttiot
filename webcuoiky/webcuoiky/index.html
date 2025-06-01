@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Smart Home Control System</title>
+   <!-- Link stylesheet -->
+   <link rel="stylesheet" href="assets/css/styles.css" />
+   <!-- Custom warning styles with higher priority -->
+   <!-- <link rel="stylesheet" href="assets/css/warning.css" /> -->
+    
+   <!-- Thêm thư viện Chart.js -->
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <!-- Firebase SDK -->
+   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+   <!-- Liên kết file JavaScript đã tách ra -->
+   <script src="assets/js/script.js" defer></script>
+   <script src="assets/js/weather.js" defer></script>
+   <script src="assets/js/thongtin.js" defer></script>
+</head>
+<body>
+   <div class="container">
+      <div class="card__container">
+         <article class="card__article">
+            <img src="assets/img/anhnhom.png" alt="THÔNG TIN CỦA NHÓM " class="card__img" />
+            <div class="card__data">
+               <span class="card__description"></span>
+               <h2 class="card__title">Members Information</h2>
+               <a href="#" class="card__button" data-modal="modal1">Read More</a>
+            </div>
+         </article>
+
+         <article class="card__article">
+            <img src="assets/img/smart_home.png" alt="Poon Hill" class="card__img" />
+            <div class="card__data">
+               
+               <h2 class="card__title">Smart Home</h2>
+               <a href="#" class="card__button" data-modal="modal2">Read More</a>
+            </div>
+         </article>
+
+         <article class="card__article">
+            <img src="assets/img/result_weather.png" alt="Bojcin Forest" class="card__img" />
+            <div class="card__data">
+            
+               <h2 class="card__title">Cities Weather</h2>
+               <a href="#" class="card__button" data-modal="modal3">Read More</a>
+            </div>
+         </article>
+      </div>
+   </div>
+
+   <!-- Trang chi tiết hiển thị khi nhấn "Read More" -->
+   <div id="fullpageDetail" class="fullpage-detail" style="display: none;">
+      <!-- Nội dung sẽ được thêm vào bằng JavaScript -->
+   </div>
+   
+   <div id="modal1" class="modal">
+  <div class="modal-content">
+    <!-- Nội dung modal1 sẽ do JS chèn -->
+  </div>
+</div>
+   <!-- Modal boxes -->
+   <div id="modal1_large" class="modal">
+  <div class="modal-content">
+    <!-- Nội dung sẽ do JS chèn -->
+  </div>
+</div>
+
+   <div id="modal4" class="modal">
+      <div class="modal-content">
+         <span class="close">×</span>
+         <h2>Video Demo</h2>
+         <p class="modal-location">Smart Home Control System</p>
+         <video width="100%" controls>
+            <source src="assets/img/demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+         </video>
+         <p class="modal-text">Video demo hệ thống nhà thông minh với các tính năng điều khiển thiết bị, theo dõi nhiệt độ và tiêu thụ điện năng.</p>
+      </div>
+   </div>
+
+   <div id="modal2" class="modal">
+      <div class="modal-content">
+         <span class="close">×</span>
+         <h2>Smart Home</h2>
+         <p class="modal-location">Smart Home Control System</p>
+         <img src="assets/img/smart_home.png" alt="Smart Home" class="modal-img" />
+         <p class="modal-text">Hệ thống nhà thông minh hiện đại cho phép bạn điều khiển các thiết bị trong nhà một cách dễ dàng và hiệu quả. Với giao diện trực quan, bạn có thể điều chỉnh nhiệt độ điều hòa, tốc độ quạt, độ sáng đèn và âm lượng TV. Hệ thống còn tích hợp tính năng theo dõi tiêu thụ điện năng và cảnh báo khi nhiệt độ vượt quá mức an toàn.</p>
+      </div>
+   </div>
+
+   
+  <div id="modal3" class="modal">
+   <div class="modal-content" id="weatherModalContent">
+      <!-- Nội dung sẽ được thêm bằng JavaScript -->
+   </div>
+   </div>
+   
+   <!-- Footer -->
+   <footer class="footer">
+      
+   </footer>
+
+</body>
+
+</html>

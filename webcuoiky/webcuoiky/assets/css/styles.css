@@ -1,0 +1,1554 @@
+/*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(82, 60%, 28%);
+  --title-color: hsl(0, 0%, 15%);
+  --text-color: hsl(0, 0%, 35%);
+  --body-color: hsl(0, 0%, 95%);
+  --container-color: hsl(0, 0%, 100%);
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --h2-font-size: 1.25rem;
+  --small-font-size: .813rem;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1120px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  margin: 0;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: -1;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== CARD ===============*/
+.container {
+  display: grid;
+  place-items: center;
+  margin-inline: 1.5rem;
+  padding-block: 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card__container {
+  display: grid;
+  row-gap: 3.5rem;
+}
+
+.card__article {
+  position: relative;
+  overflow: hidden;
+}
+
+.card__img {
+  width: 328px;
+  border-radius: 1.5rem;
+}
+
+.card__data {
+  width: 280px;
+  background-color: var(--container-color);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.card__description {
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
+}
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+
+.card__button {
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+/* Naming animations in hover */
+.card__article:hover .card__data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card__article:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+.card__article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+
+.card__article:not(:hover) .card__data {
+  animation: remove-data 1s forwards;
+}
+
+/* Card animation */
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 340px) {
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__data {
+    width: 250px; 
+    padding: 1rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+/* For large devices */
+@media screen and (min-width: 1120px) {
+  .container {
+    height: 100vh;
+  }
+
+  .card__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card__img {
+    width: 348px;
+  }
+  .card__data {
+    width: 316px;
+    padding-inline: 2.5rem;
+  }
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+.container {
+  flex: 1;
+}
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 0.9rem;
+}
+/* Add this to your existing CSS file */
+
+/* Modal styles */
+.modal {
+   display: none;
+   position: fixed;
+   z-index: 1000;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   background-color: rgba(0, 0, 0, 0.8);
+   animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+   from {opacity: 0;}
+   to {opacity: 1;}
+}
+
+.modal-content {
+   background-color: var(--container-color);
+   margin: 5% auto;
+   padding: 2rem;
+   border-radius: 1rem;
+   width: 80%;
+   max-width: 700px;
+   position: relative;
+   animation: slideDown 0.4s;
+}
+
+@keyframes slideDown {
+   from {
+      top: -50px;
+      opacity: 0;
+   }
+   to {
+      top: 0;
+      opacity: 1;
+   }
+}
+
+.close {
+   position: absolute;
+   right: 1.5rem;
+   top: 1rem;
+   color: var(--text-color);
+   font-size: 1.5rem;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.close:hover {
+   color: var(--first-color);
+}
+
+.modal h2 {
+   color: var(--title-color);
+   margin-bottom: 0.5rem;
+}
+
+.modal-location {
+   color: var(--first-color);
+   font-style: italic;
+   margin-bottom: 1.5rem;
+   display: block;
+}
+
+.modal-img {
+   width: 100%;
+   border-radius: 0.5rem;
+   margin-bottom: 1.5rem;
+}
+
+.modal-text {
+   line-height: 1.6;
+   color: var(--text-color);
+}
+
+/* Responsive modal */
+@media screen and (max-width: 768px) {
+   .modal-content {
+      width: 90%;
+      margin: 10% auto;
+      padding: 1.5rem;
+   }
+}
+
+@media screen and (max-width: 480px) {
+   .modal-content {
+      width: 95%;
+      margin: 15% auto;
+      padding: 1rem;
+   }
+}
+.fullpage-detail {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   background: url('../img/blue-sky-with-clouds.jpg') center/cover fixed;
+   z-index: 1000;
+   overflow-y: auto;
+   padding: 2rem;
+   box-sizing: border-box;
+}
+
+.fullpage-detail::before {
+   content: '';
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background: rgba(255, 255, 255, 0.3);
+   pointer-events: none;
+   z-index: -1;
+}
+
+.back-button {
+   background: none;
+   border: none;
+   font-size: 5rem;
+   cursor: pointer;
+   margin-bottom: 2rem;
+   color: #000;
+   position: fixed;
+   top: 1rem;
+   left: 1rem;
+   z-index: 1001;
+   font-weight: bold;
+   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.detail-content {
+   max-width: 1200px;
+   margin: 4rem auto 0;
+   padding-top: 3rem;
+   position: relative;
+   z-index: 1;
+}
+
+/* Device Control Panel Styles */
+.control-panel {
+  background: url('../img/background.avif') no-repeat center center;
+  background-size: cover;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Thêm overlay để làm nổi bật nội dung */
+.control-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+}
+
+/* Đảm bảo nội dung hiển thị trên overlay */
+.control-header,
+.control-content,
+.temperature-warning {
+  position: relative;
+  z-index: 2;
+}
+
+.control-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.control-title {
+  color: #2e7d32;
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.environment-data {
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.environment-data p {
+  margin: 0;
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.environment-data span {
+  font-weight: 600;
+  color: #000;
+}
+
+.environment-data span[data-value="37"],
+.environment-data span[data-value="70"] {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.device-clock {
+  color: #2e7d32;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .control-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .environment-data {
+    margin-left: 0;
+    justify-content: space-between;
+  }
+  
+  .device-clock {
+    position: static;
+    margin-top: 1rem;
+    align-self: flex-end;
+  }
+}
+
+/* Control Content Layout */
+.control-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Device Controls Panel */
+.device-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: center;
+}
+
+.device-controls h2 {
+  font-size: 1.5rem;
+  color: var(--title-color);
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.device-item {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.device-item h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.device-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.device-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.device-img {
+  width: 150px;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.device-status {
+  color: #34495e;
+  margin: 10px 0;
+}
+
+/* Thanh trượt điều khiển */
+.device-slider-control {
+  color: #34495e;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.device-slider-control span {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* Nút điều chỉnh nhiệt độ nhanh */
+.quick-temp-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.temp-btn {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.temp-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.temp-btn.warning {
+  background: rgba(255, 152, 0, 0.2);
+  border-color: rgba(255, 152, 0, 0.4);
+  color: #000;
+}
+
+.temp-btn.danger {
+  background: rgba(244, 67, 54, 0.2);
+  border-color: rgba(244, 67, 54, 0.4);
+  color: #000;
+}
+
+.temp-btn.warning:hover {
+  background: rgba(255, 152, 0, 0.3);
+}
+
+.temp-btn.danger:hover {
+  background: rgba(244, 67, 54, 0.3);
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 60%;
+  height: 8px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--first-color);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--first-color);
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Power Consumption Chart Section */
+.power-consumption-section {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.power-consumption-section h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.chart-container {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+/* Grid layout for larger screens */
+@media screen and (min-width: 768px) {
+  .control-content {
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  
+  .device-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 60%;
+    max-width: 800px;
+  }
+  
+  .device-item {
+    margin: 0;
+    height: 100%;
+  }
+  
+  .power-consumption-section {
+    width: 40%;
+    max-width: 400px;
+  }
+  
+  .chart-container {
+    height: 100%;
+    min-height: 400px;
+  }
+}
+
+/* Điều chỉnh cho màn hình rất lớn */
+@media screen and (min-width: 1200px) {
+  .device-controls {
+    width: 65%;
+    max-width: 900px;
+  }
+  
+  .power-consumption-section {
+    width: 35%;
+    max-width: 450px;
+  }
+}
+
+/* Điều chỉnh cho màn hình nhỏ */
+@media screen and (max-width: 767px) {
+  .control-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .environment-data {
+    margin-left: 0;
+    justify-content: space-between;
+  }
+  
+  .device-clock {
+    position: static;
+    margin-top: 1rem;
+    align-self: flex-end;
+  }
+  
+  .chart-container {
+    height: 250px;
+  }
+}
+
+/* Warning Styles */
+.temperature-warning {
+  position: relative;
+  margin: 20px auto;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  transition: all 0.3s ease;
+}
+
+.warning-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning-content {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.warning-title {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.warning-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.warning-temp {
+  font-weight: 700;
+  color: #dc3545;
+  font-size: 18px;
+}
+
+/* Warning States */
+.warning-normal {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.warning-normal .warning-temp {
+  color: #28a745;
+}
+
+.warning-high {
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.warning-high .warning-temp {
+  color: #ffc107;
+}
+
+.warning-very-high {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  animation: pulse 2s infinite;
+}
+
+.warning-very-high .warning-temp {
+  color: #dc3545;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+/* Temperature Alert */
+.temp-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: translateX(120%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.temp-alert.show {
+  transform: translateX(0);
+}
+
+.temp-alert.success {
+  border-left: 4px solid #28a745;
+}
+
+.temp-alert.warning {
+  border-left: 4px solid #ffc107;
+}
+
+.temp-alert.danger {
+  border-left: 4px solid #dc3545;
+}
+
+.alert-icon {
+  font-size: 20px;
+}
+
+.alert-message {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alert-close {
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+  padding: 0 5px;
+}
+
+.alert-close:hover {
+  color: #333;
+}
+
+/* Mode Control Buttons - Vertical Layout */
+.mode-controls-vertical {
+  background: rgba(255, 255, 255, 0.4);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.mode-controls-vertical .mode-button {
+  color: #000;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.mode-controls-vertical .mode-button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.mode-controls-vertical .mode-button.active {
+  background: rgba(76, 175, 80, 0.3);
+  border-color: rgba(76, 175, 80, 0.5);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+/* Điều chỉnh layout cho màn hình lớn */
+@media screen and (min-width: 768px) {
+  .power-consumption-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .chart-container {
+    flex: 1;
+    margin-bottom: 1rem;
+  }
+  
+  .mode-controls-vertical {
+    margin-top: 1rem;
+  }
+}
+
+/* Điều chỉnh cho màn hình nhỏ */
+@media screen and (max-width: 767px) {
+  .mode-controls-vertical {
+    margin-top: 1rem;
+  }
+  
+  .mode-controls-vertical .mode-button {
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Room Controls Styles */
+.room-controls {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+   gap: 20px;
+   margin-bottom: 30px;
+}
+
+.room-section {
+   background: #f8f9fa;
+   padding: 15px;
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s ease;
+   position: relative;
+   overflow: hidden;
+   min-height: 200px;
+}
+
+.room-section::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-size: cover;
+   background-position: center;
+   opacity: 0.2;
+   z-index: 0;
+}
+
+.room-section.living-room::before {
+   background-image: url('../img/living-room.gif');
+}
+
+.room-section.bedroom::before {
+   background-image: url('../img/bedroom.gif');
+}
+
+.room-section.kitchen::before {
+   background-image: url('../img/kitchen.gif');
+}
+
+.room-section:hover {
+   transform: translateY(-5px);
+}
+
+.room-section h3 {
+   color: #2c3e50;
+   margin-top: 0;
+   margin-bottom: 15px;
+   font-size: 18px;
+}
+
+.sensor-data {
+   display: grid;
+   gap: 10px;
+}
+
+.data-item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 8px;
+   background: white;
+   border-radius: 4px;
+   color: #34495e;
+}
+
+.data-item span:first-child {
+   font-weight: 500;
+   color: #2c3e50;
+}
+
+.data-item span:last-child {
+   color: #4CAF50;
+   font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+   .room-controls {
+      grid-template-columns: 1fr;
+   }
+   
+   .room-section {
+      padding: 1rem;
+   }
+}
+
+.room-info-container {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  margin: 20px auto;
+  margin-bottom: 30px;
+}
+
+.room-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.room-section {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.room-section:hover {
+  transform: translateY(-5px);
+}
+
+.room-section h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.sensor-data {
+  display: grid;
+  gap: 10px;
+}
+
+.data-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: white;
+  border-radius: 4px;
+  color: #34495e;
+}
+
+.data-item span:first-child {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.data-item span:last-child {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .room-info-container {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .room-controls {
+    grid-template-columns: 1fr;
+  }
+}
+
+.room-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.room-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.room-basic-info {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  display: none;
+}
+
+.room-details {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  display: none;
+}
+
+.room-card.active .room-basic-info,
+.room-card.active .room-details {
+  opacity: 1;
+  transform: translateY(0);
+  display: block;
+}
+
+.room-card.active {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.room-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.room-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  background: rgba(46, 125, 50, 0.1);
+  padding: 5px;
+}
+
+.room-card h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+.room-temp, .room-humidity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.room-temp .label, .room-humidity .label {
+  color: #666;
+}
+
+.room-temp .value, .room-humidity .value {
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.room-temp .value[data-value="37"], .room-humidity .value[data-value="70"] {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.room-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(46, 125, 50, 0.1);
+  border-radius: 8px;
+}
+
+.room-status .label {
+  color: #666;
+}
+
+.room-status .value {
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+.room-warning {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.room-warning.warning {
+  background: rgba(255, 152, 0, 0.1);
+  border: 1px solid #ff9800;
+  color: #f57c00;
+}
+
+.room-warning.danger {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid #f44336;
+  color: #d32f2f;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(244, 67, 54, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 67, 54, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .room-card {
+    padding: 15px;
+  }
+  
+  .room-icon {
+    font-size: 20px;
+    padding: 8px;
+  }
+  
+  .room-card h3 {
+    font-size: 16px;
+  }
+}
+
+/* Responsive adjustments for warning */
+@media screen and (max-width: 480px) {
+  .temperature-warning {
+    width: 95%;
+    padding: 15px;
+    margin: 15px auto;
+  }
+  
+  .warning-icon {
+    font-size: 24px;
+  }
+  
+  .warning-title {
+    font-size: 16px;
+  }
+  
+  .warning-text {
+    font-size: 14px;
+  }
+  
+  .warning-temp {
+    font-size: 16px;
+  }
+}
+/* Modal 3 - Cities Weather Specific Styles */
+#modal3 .modal-content {
+  position: relative;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1.2rem;
+  width: 90%;
+  max-width: 1200px;
+  height: auto;
+  margin-top: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+#modal3 .modal-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('../img/blue-sky-with-clouds.jpg') center/cover no-repeat;
+  filter: brightness(0.6) blur(4px);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+#modal3 .close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.8rem;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  transition: transform 0.2s ease;
+}
+
+#modal3 .close:hover {
+  color: var(--first-color);
+  transform: scale(1.1);
+}
+
+/* Weather Content Container */
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Weather Header */
+.weather-header {
+  padding: 1.5rem;
+  background: rgba(46, 125, 50, 0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.weather-header h2 {
+  color: var(--title-color);
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+/* Weather Main Content */
+.weather-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Weather Sidebar */
+.weather-sidebar {
+  width: 300px;
+  padding: 1.5rem;
+  background: rgba(255,255,255,0.9);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  overflow-y: auto;
+}
+
+/* Weather Map/Chart Area */
+.weather-display {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  #modal3 .modal-content {
+    width: 95%;
+    height: 95vh;
+  }
+  
+  .weather-container {
+    height: 90vh;
+  }
+  
+  .weather-main {
+    flex-direction: column;
+  }
+  
+  .weather-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+}
+
+/* Animation for modal3 */
+#modal3 {
+  animation: fadeInWeather 0.5s ease-out;
+}
+
+@keyframes fadeInWeather {
+  from {
+    background: rgba(0,0,0,0);
+  }
+  to {
+    background: rgba(0,0,0,0.8);
+  }
+}
+
+/* City List Styles */
+.city-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.city-item {
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  background: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.city-item:hover {
+  background: #f5f5f5;
+  transform: translateX(5px);
+}
+
+.city-item.active {
+  border-left: 4px solid var(--first-color);
+  background: rgba(46, 125, 50, 0.1);
+}
+
+.city-name {
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: 0.3rem;
+}
+
+.city-temp {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+/* Weather Info Display */
+.current-weather {
+  background: white;
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  display: block;
+}
+
+.weather-temp {
+  font-size: 3rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--title-color);
+  margin: 0.5rem 0;
+}
+
+.weather-desc {
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+}
+
+.detail-icon {
+  margin-right: 0.5rem;
+  color: var(--first-color);
+}
+
+/* Forecast Styles */
+.weather-forecast {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.forecast-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--title-color);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.forecast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.forecast-item {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.forecast-day {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.forecast-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 0.5rem;
+}
+
+.forecast-temp {
+  font-size: 0.9rem;
+}

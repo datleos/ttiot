@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "author": "Tien Dat Vo",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -114.9,
+      "left": -63,
+      "attrs": { "temperature": "23.1" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht2",
+      "top": -114.9,
+      "left": 90.6,
+      "attrs": { "temperature": "42.6" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht3",
+      "top": -114.9,
+      "left": 13.8,
+      "attrs": { "temperature": "45.2" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht5",
+      "top": -9.3,
+      "left": 234.6,
+      "attrs": { "temperature": "33.3" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v57.6", "h86.4", "v-96" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v0" ] ],
+    [ "dht2:SDA", "esp:5", "green", [ "v0" ] ],
+    [ "esp:18", "dht5:SDA", "green", [ "h0" ] ],
+    [ "dht3:SDA", "esp:4", "green", [ "v0" ] ],
+    [ "dht2:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht3:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht5:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht2:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht3:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht5:GND", "esp:GND.1", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
